@@ -6,7 +6,6 @@ export default function SurvivalSection() {
   const lineEndPoints = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
   return (
-    // Added id="market" to match the Navbar navigation link
     <section id="market" className="bg-white py-12 lg:py-20 font-sans selection:bg-orange-600 selection:text-white overflow-hidden relative">
       <div className="container mx-auto px-6 lg:px-12 max-w-[1440px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 relative items-start">
@@ -85,7 +84,6 @@ export default function SurvivalSection() {
           {/* --- Right Column (Numbers) --- */}
           <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-10 relative z-20 lg:pl-10 py-2 bg-white">
             
-            {/* Item 1 */}
             <div className="flex flex-col">
               <span className="text-[#FF6B00] text-2xl lg:text-3xl font-medium tracking-tight mb-2">
                 .01
@@ -98,7 +96,6 @@ export default function SurvivalSection() {
               </p>
             </div>
 
-            {/* Item 2 */}
             <div className="flex flex-col">
               <span className="text-[#FF6B00] text-2xl lg:text-3xl font-medium tracking-tight mb-2">
                 .02
@@ -111,7 +108,6 @@ export default function SurvivalSection() {
               </p>
             </div>
 
-            {/* Item 3 */}
             <div className="flex flex-col">
               <span className="text-[#FF6B00] text-2xl lg:text-3xl font-medium tracking-tight mb-2">
                 .03
@@ -124,9 +120,14 @@ export default function SurvivalSection() {
               </p>
             </div>
 
-            {/* CTA Button linked to the Case Study Section */}
-            <a href="#case-studies">
-              <button className="mt-2 bg-[#FF6B00] hover:bg-orange-700 transition-colors text-white px-5 py-2.5 font-medium flex items-center justify-center gap-2 w-max text-sm shadow-sm rounded-sm">
+            {/* UPDATED: Link to PDF file */}
+            <a 
+              href="/case study.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mt-2 block w-max"
+            >
+              <button className="bg-[#FF6B00] hover:bg-orange-700 transition-colors text-white px-5 py-2.5 font-medium flex items-center justify-center gap-2 text-sm shadow-sm rounded-sm">
                 View Case Study <ArrowUpRight className="w-4 h-4" strokeWidth={2} />
               </button>
             </a>

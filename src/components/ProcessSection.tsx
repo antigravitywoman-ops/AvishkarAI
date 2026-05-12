@@ -3,7 +3,6 @@ import { ArrowUpRight } from 'lucide-react';
 
 export default function ProcessSection() {
   return (
-    // Added id="how-it-works" for Navbar navigation
     <section id="how-it-works" className="bg-white py-16 lg:py-24 font-sans selection:bg-orange-600 selection:text-white">
       {/* Inline styles for custom floating animations */}
       <style dangerouslySetInnerHTML={{ __html: `
@@ -61,19 +60,13 @@ export default function ProcessSection() {
               <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-8">
                 AI ingests monitoring alerts from any critical system (SCADA, NOC, BMS) and instantly triages severity to prevent invisible downtime.
               </p>
-              {/* Linked to Case Study Section */}
-              <a href="#case-studies">
-                <button className="bg-white text-[#FF6B00] px-6 py-2.5 text-sm font-medium flex items-center gap-2 hover:bg-slate-100 transition-all hover:gap-3 rounded-sm">
-                  Case Study <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </a>
             </div>
           </div>
 
           {/* --- STEPS 2 & 3: 50/50 Grid --- */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
-            {/* Step 2: Animated Dashboard */}
+            {/* Step 2: Autonomous AI Dispatching */}
             <div className="bg-[#112038] text-white pt-10 px-10 md:pt-14 md:px-14 relative overflow-hidden flex flex-col min-h-[500px] rounded-sm group">
               <img src="/bg2.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute inset-0 bg-[#112038]/40 z-0"></div>
@@ -89,7 +82,6 @@ export default function ProcessSection() {
                   FSM matches the alert to the right field engineer based on proximity and skill, sending the job with full context.
                 </p>
                 
-                {/* Floating Dashboard Animation */}
                 <div className="mt-auto w-full relative group-hover:translate-y-2 transition-transform duration-500">
                   <img 
                     src="/dashboard.png" 
@@ -100,9 +92,9 @@ export default function ProcessSection() {
               </div>
             </div>
 
-            {/* Step 3 */}
-            <div className="bg-[#182a4d] text-white p-10 md:p-14 relative overflow-hidden flex flex-col min-h-[500px] rounded-sm">
-               <img src="/bg3.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-30 z-0" />
+            {/* Step 3: Resolution & Automated Closing */}
+            <div className="bg-[#182a4d] text-white pt-10 px-10 md:pt-14 md:px-14 relative overflow-hidden flex flex-col min-h-[500px] rounded-sm group">
+               <img src="/bg3.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 group-hover:scale-105 transition-transform duration-1000" />
                <div className="absolute inset-0 bg-[#182a4d]/40 z-0"></div>
                
                <div className="relative z-10 flex flex-col h-full">
@@ -112,17 +104,25 @@ export default function ProcessSection() {
                 <h3 className="text-2xl md:text-3xl font-medium mb-4 tracking-tight">
                   Resolution & Automated Closing
                 </h3>
-                <p className="text-slate-300 text-base leading-relaxed max-w-md">
+                <p className="text-slate-300 text-sm leading-relaxed max-w-xs mb-10">
                   The system tracks SLAs in real-time and logs resolution data automatically, ensuring 100% accountability from alert to closure.
                 </p>
+
+                {/* Floating Image added for Step 3 */}
+                <div className="mt-auto w-full relative group-hover:translate-y-2 transition-transform duration-500">
+                  <img 
+                    src="/dashboard1.png" 
+                    alt="Resolution status and SLA tracking" 
+                    className="w-full h-auto object-cover rounded-t-lg shadow-2xl border border-slate-700/50 animate-float"
+                  />
+                </div>
               </div>
             </div>
 
           </div>
 
-          {/* --- FINAL SECTION: Split Layout with Animated Analytics --- */}
+          {/* --- FINAL SECTION: Split Layout --- */}
           <div className="bg-slate-900 text-white grid grid-cols-1 lg:grid-cols-12 overflow-hidden relative rounded-sm group">
-            
             <div className="absolute inset-0 opacity-20 pointer-events-none">
                 <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <path d="M0,100 C30,50 70,50 100,0" stroke="#FF6B00" strokeWidth="0.5" fill="none" />
@@ -136,7 +136,6 @@ export default function ProcessSection() {
                 </svg>
             </div>
 
-            {/* Left Content */}
             <div className="p-10 md:p-14 lg:p-16 lg:col-span-5 flex flex-col justify-center relative z-10">
               <span className="border border-[#FF6B00]/40 px-3 py-1 text-[10px] font-mono tracking-[0.2em] uppercase w-max mb-6 bg-black/10 rounded-sm">
                 Infrastructure Native
@@ -147,7 +146,6 @@ export default function ProcessSection() {
               <p className="text-white/90 text-sm leading-relaxed mb-8 max-w-sm">
                 We align our success with your uptime. Land with 500 ATMs, expand to 5,000—our platform scales seamlessly with your asset count.
               </p>
-              {/* Linked to Book Call Section */}
               <a href="#book-call">
                 <button className="bg-[#FF6B00] text-white px-6 py-2.5 text-sm font-medium flex items-center justify-center gap-2 hover:bg-orange-700 transition-all hover:scale-105 w-max rounded-sm shadow-lg">
                   Book a Call <ArrowUpRight className="w-4 h-4" />
@@ -155,7 +153,6 @@ export default function ProcessSection() {
               </a>
             </div>
 
-            {/* Right Analytics */}
             <div className="lg:col-span-7 bg-[#f8fafc]/5 p-6 md:p-10 flex items-center justify-end relative z-10">
               <img 
                 src="/analytic.png" 
@@ -163,9 +160,7 @@ export default function ProcessSection() {
                 className="w-full h-auto object-cover rounded-lg shadow-2xl border border-white/10 lg:translate-x-8 transition-all duration-700 group-hover:translate-x-0 group-hover:scale-[1.02]"
               />
             </div>
-
           </div>
-
         </div>
       </div>
     </section>

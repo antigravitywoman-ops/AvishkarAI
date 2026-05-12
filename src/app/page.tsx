@@ -3,10 +3,8 @@ import LogoTicker from "@/components/LogoTicker";
 import ProcessSection from "@/components/ProcessSection";
 import SurvivalSection from "@/components/SurvivalSection";   
 import DeploymentSection from "@/components/DeploymentSection";
-import IntegrationSection from "@/components/IntegrationSection";
 import LiveAgentsSection from "@/components/LiveAgentsSection";
 import DiscoverySection from "@/components/DiscoverySection";
-import CaseStudySection from "@/components/CaseStudySection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
@@ -36,14 +34,11 @@ export default function Home() {
 
       <DeploymentSection />
       
-      <IntegrationSection />
-
       {/* id="faq" matches the Navbar link */}
       <section id="faq">
         <FAQSection />
       </section>
 
-      <CaseStudySection />
       <DiscoverySection />
       
       <Footer />

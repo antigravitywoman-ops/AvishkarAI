@@ -2,7 +2,8 @@
 
 import React from 'react';
 
-// Your specific logo files
+// Your specific logo files (Updated 1 to 16)
+// Ensure the extensions (.png, .webp, .jpeg) match your actual files in the public folder.
 const LOGOS = [
   "1.webp",
   "2.jpeg",
@@ -14,6 +15,12 @@ const LOGOS = [
   "8.webp",
   "9.jpeg",
   "10.png",
+  "11.png", 
+  "12.png",
+  "13.png",
+  "14.jpeg",
+  "15.jpeg",
+  "16.png",
 ];
 
 export default function LogoTicker() {
@@ -36,7 +43,7 @@ export default function LogoTicker() {
               <img 
                 key={`track1-${index}`}
                 src={`/${logo}`} 
-                alt={`Partner Logo ${index}`} 
+                alt={`Partner Logo ${index + 1}`} 
                 /* mix-blend-multiply removes white backgrounds from JPEGs */
                 className="h-8 md:h-12 w-auto max-w-[160px] md:max-w-[200px] object-contain opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500 mix-blend-multiply cursor-pointer"
               />
@@ -49,7 +56,7 @@ export default function LogoTicker() {
               <img 
                 key={`track2-${index}`}
                 src={`/${logo}`} 
-                alt={`Partner Logo ${index}`} 
+                alt={`Partner Logo ${index + 1}`} 
                 className="h-8 md:h-12 w-auto max-w-[160px] md:max-w-[200px] object-contain opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500 mix-blend-multiply cursor-pointer"
               />
             ))}
@@ -64,8 +71,9 @@ export default function LogoTicker() {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-100%); }
         }
+        /* You may need to increase the 35s duration slightly since the track is now longer */
         .animate-marquee {
-          animation: marquee 35s linear infinite;
+          animation: marquee 45s linear infinite; 
         }
       `}} />
     </section>

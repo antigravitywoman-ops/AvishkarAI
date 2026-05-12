@@ -1,20 +1,5 @@
 import React from 'react';
-import { 
-  ArrowUpRight, 
-  CheckCircle2, 
-  FileText, 
-  Network, 
-  UserCheck, 
-  Activity, 
-  ShieldAlert, 
-  Zap, 
-  TowerControl as Tower, 
-  Thermometer, 
-  Database,
-  Target,
-  CreditCard,
-  Globe
-} from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function LiveAgentsSection() {
   return (
@@ -57,21 +42,22 @@ export default function LiveAgentsSection() {
               <p className="text-slate-400 font-mono text-[11px] uppercase tracking-[0.15em] mb-6">Capabilities</p>
               <ul className="flex flex-col gap-5">
                 {[
-                  { icon: <ShieldAlert className="w-5 h-5 text-[#FF6B00]" />, text: "Severity triage & alert matching" },
-                  { icon: <Target className="w-5 h-5 text-[#FF6B00]" />, text: "Proximity-based engineer assignment" },
-                  { icon: <Activity className="w-5 h-5 text-[#FF6B00]" />, text: "Real-time SLA resolution tracking" },
-                  { icon: <CheckCircle2 className="w-5 h-5 text-[#FF6B00]" />, text: "Automated ticket closure & logging" },
-                  { icon: <Database className="w-5 h-5 text-[#FF6B00]" />, text: "Integration with proprietary NOC tools" }
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-slate-700 text-[0.95rem] font-medium">
-                    {item.icon} {item.text}
+                  "Severity triage & alert matching",
+                  "Proximity-based engineer assignment",
+                  "Real-time SLA resolution tracking",
+                  "Automated ticket closure & logging",
+                  "Integration with proprietary NOC tools"
+                ].map((text, i) => (
+                  <li key={i} className="text-slate-700 text-[0.95rem] font-medium">
+                    {text}
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="lg:col-span-3 flex flex-col justify-center gap-4">
-              <a href="#case-studies" className="w-full">
+              {/* Linked directly to the PDF in a new tab */}
+              <a href="/case%20study.pdf" target="_blank" rel="noopener noreferrer" className="w-full">
                 <button className="w-full bg-[#FF6B00] hover:bg-orange-700 transition-colors text-white py-3.5 flex items-center justify-center gap-2 text-sm font-medium rounded-sm shadow-md">
                   View Case Study <ArrowUpRight className="w-4 h-4" />
                 </button>
@@ -106,21 +92,22 @@ export default function LiveAgentsSection() {
               <p className="text-orange-300/60 font-mono text-[11px] uppercase tracking-[0.15em] mb-6">Capabilities</p>
               <ul className="flex flex-col gap-5">
                 {[
-                  { icon: <Tower className="w-5 h-5 text-[#FF6B00]" />, text: "SCADA / NMS signal monitoring" },
-                  { icon: <FileText className="w-5 h-5 text-[#FF6B00]" />, text: "Job dispatch with full tech context" },
-                  { icon: <Globe className="w-5 h-5 text-[#FF6B00]" />, text: "Regional engineer orchestration" },
-                  { icon: <Zap className="w-5 h-5 text-[#FF6B00]" />, text: "Critical power failure triage" },
-                  { icon: <UserCheck className="w-5 h-5 text-[#FF6B00]" />, text: "90% autonomous dispatch logic" }
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-white text-[0.95rem] font-medium">
-                    {item.icon} {item.text}
+                  "SCADA / NMS signal monitoring",
+                  "Job dispatch with full tech context",
+                  "Regional engineer orchestration",
+                  "Critical power failure triage",
+                  "90% autonomous dispatch logic"
+                ].map((text, i) => (
+                  <li key={i} className="text-white text-[0.95rem] font-medium">
+                    {text}
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="lg:col-span-3 flex flex-col justify-center gap-4">
-              <a href="#case-studies" className="w-full">
+              {/* Linked directly to the PDF in a new tab */}
+              <a href="/case%20study.pdf" target="_blank" rel="noopener noreferrer" className="w-full">
                 <button className="w-full bg-[#FF6B00] hover:bg-orange-700 transition-colors text-white py-3.5 flex items-center justify-center gap-2 text-sm font-medium rounded-sm">
                   View Case Study <ArrowUpRight className="w-4 h-4" />
                 </button>
@@ -155,21 +142,22 @@ export default function LiveAgentsSection() {
               <p className="text-white/60 font-mono text-[11px] uppercase tracking-[0.15em] mb-6">Capabilities</p>
               <ul className="flex flex-col gap-5">
                 {[
-                  { icon: <Thermometer className="w-5 h-5 text-white" />, text: "BMS temperature & power triage" },
-                  { icon: <ShieldAlert className="w-5 h-5 text-white" />, text: "Filtering 100s of daily noise alerts" },
-                  { icon: <Network className="w-5 h-5 text-white" />, text: "Cross-system asset coordination" },
-                  { icon: <Target className="w-5 h-5 text-white" />, text: "95%+ uptime SLA maintenance" },
-                  { icon: <CreditCard className="w-5 h-5 text-white" />, text: "Outcome-based per-asset pricing" }
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-white text-[0.95rem] font-medium">
-                    {item.icon} {item.text}
+                  "BMS temperature & power triage",
+                  "Filtering 100s of daily noise alerts",
+                  "Cross-system asset coordination",
+                  "95%+ uptime SLA maintenance",
+                  "Outcome-based per-asset pricing"
+                ].map((text, i) => (
+                  <li key={i} className="text-white text-[0.95rem] font-medium">
+                    {text}
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="lg:col-span-3 flex flex-col justify-center gap-4">
-              <a href="#case-studies" className="w-full">
+              {/* Linked directly to the PDF in a new tab */}
+              <a href="/case%20study.pdf" target="_blank" rel="noopener noreferrer" className="w-full">
                 <button className="w-full bg-[#0D2149] hover:bg-slate-900 transition-colors text-white py-3.5 flex items-center justify-center gap-2 text-sm font-medium rounded-sm">
                   View Case Study <ArrowUpRight className="w-4 h-4" />
                 </button>
