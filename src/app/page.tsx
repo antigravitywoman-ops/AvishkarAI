@@ -1,10 +1,12 @@
 import HeroSection from "@/components/HeroSection";
 import LogoTicker from "@/components/LogoTicker";
 import ProcessSection from "@/components/ProcessSection";
+import OptimizationSection from "@/components/tabs";
 import SurvivalSection from "@/components/SurvivalSection";   
 import DeploymentSection from "@/components/DeploymentSection";
 import LiveAgentsSection from "@/components/LiveAgentsSection";
 import DiscoverySection from "@/components/DiscoverySection";
+import GlobalDeploymentSection from "@/components/map";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
@@ -32,7 +34,12 @@ export default function Home() {
         <SurvivalSection />
       </section>
 
+
+      <OptimizationSection />
+      
       <DeploymentSection />
+
+      <GlobalDeploymentSection />
       
       {/* id="faq" matches the Navbar link */}
       <section id="faq">
