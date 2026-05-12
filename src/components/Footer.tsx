@@ -2,12 +2,12 @@ import React from 'react';
 import { Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
+  // Updated primary links to remove FSM Dispatch/Market Size and include Industries
   const primaryLinks = [
-    { num: "1.1", label: "HOME", href: "#" },
-    { num: "1.2", label: "FSM DISPATCH", href: "#fsm-dispatch" },
-    { num: "1.3", label: "HOW IT WORKS", href: "#how-it-works" },
-    { num: "1.4", label: "MARKET SIZE", href: "#market" },
-    { num: "1.5", label: "FAQ", href: "#faq" },
+    { num: "1.1", label: "HOME", href: "/" },
+    { num: "1.2", label: "INDUSTRIES", href: "/industries" },
+    { num: "1.3", label: "HOW IT WORKS", href: "/#how-it-works" },
+    { num: "1.4", label: "FAQ", href: "/#faq" },
   ];
 
   const platformLinks = [
