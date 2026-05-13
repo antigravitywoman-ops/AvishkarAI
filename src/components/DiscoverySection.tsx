@@ -42,7 +42,8 @@ export default function DiscoverySection() {
         <div className="w-full bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden min-h-[600px] flex justify-center">
           <Cal 
             namespace="default"
-            calLink="arpitsharmawritingsessions/seoauditavishkar"
+            // Updated to the new Connect with Founder link
+            calLink="arpitsharmawritingsessions/connect-with-founder"
             style={{ width: "100%", height: "100%", overflow: "scroll" }}
             config={{ layout: "month_view" }}
           />
