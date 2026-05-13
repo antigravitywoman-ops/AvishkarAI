@@ -1,7 +1,10 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import Footer from '@/components/Footer';
 import AgentCard from '@/components/AgentCard';
+import { MeshGradient } from "@paper-design/shaders-react";
 
 const industryData: Record<string, any> = {
   'recruitment-staffing': {
@@ -157,9 +160,26 @@ const industryData: Record<string, any> = {
   }
 };
 
-export default async function IndustryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default function IndustryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = React.use(params);
   const industry = industryData[slug];
+
+  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const update = () =>
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const meshColors = ["#0D2149", "#112038", "#FF6B00", "#182a4d", "#ff9d5c", "#020617"];
 
   if (!industry) {
     return (
@@ -173,57 +193,91 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
   return (
     <main className="min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-600 selection:text-white relative flex flex-col">
       
-      {/* --- Hero Section with Video Background --- */}
-      <section className="relative w-full min-h-[55vh] flex flex-col justify-center pt-32 lg:pt-48 pb-24 lg:pb-32 overflow-hidden bg-black text-left">
+      {/* --- Hero Section with Shader Background --- */}
+      <section className="relative w-full min-h-[70vh] lg:min-h-[80vh] flex flex-col justify-center pt-32 lg:pt-40 pb-20 lg:pb-28 overflow-hidden bg-black text-left">
         
-        {/* Pure Video Background */}
+        {/* Smooth Mesh Shader Background */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          
-          {/* Gradient overlay to blend the video smoothly into the white section below */}
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent z-10"></div>
+          {mounted && (
+            <>
+              <MeshGradient
+                width={dimensions.width}
+                height={dimensions.height}
+                colors={meshColors}
+                distortion={1.2}
+                swirl={0.5}
+                grainMixer={0}
+                grainOverlay={0}
+                speed={0.4}
+                offsetX={0}
+              />
+              {/* Dark veil overlay to ensure text readability */}
+              <div className="absolute inset-0 bg-black/50" />
+            </>
+          )}
         </div>
 
-        {/* --- Split Content Grid --- */}
-        <div className="container relative z-20 mx-auto px-6 lg:px-12 max-w-[1440px] flex-1 flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
+        {/* --- Content Area --- */}
+        <div className="relative z-20 flex flex-col w-full max-w-[1440px] mx-auto px-6 lg:px-12 flex-1">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full items-center">
             
             {/* Left Side: Main Headline */}
             <div className="lg:col-span-7">
-              {/* Uses the new title property with the <br /> injected */}
               <h1 className="text-4xl md:text-5xl lg:text-[4.5rem] font-medium leading-[1.05] tracking-tight text-white drop-shadow-2xl">
                 {industry.title || industry.name}
               </h1>
             </div>
             
-            {/* Right Side: Paragraph & Button Stack */}
-            <div className="lg:col-span-4 lg:col-start-9 lg:pt-3 flex flex-col items-start gap-6">
+            {/* Right Side: Paragraph */}
+            <div className="lg:col-span-4 lg:col-start-9 lg:pt-3">
               <p className="text-[#FF6B00] font-medium text-base lg:text-lg leading-relaxed drop-shadow-md">
                 {industry.description}
               </p>
-              <a 
-                href="/#book-call" 
-                className="inline-flex bg-[#FF6B00] hover:bg-orange-700 transition-all text-white px-8 py-3 text-sm font-medium items-center justify-center gap-3 rounded-sm shadow-2xl border border-white/10 hover:-translate-y-0.5 w-max mt-2"
-              >
-                Discuss Implementation <ArrowUpRight className="w-5 h-5" />
-              </a>
             </div>
 
           </div>
+
+          {/* --- Bottom Interactive Cards --- */}
+          <div className="mt-auto pt-20 lg:pt-32 flex flex-col sm:flex-row justify-end gap-3 lg:gap-4 w-full">
+            
+            {/* Card 1: Book a Call (Orange) */}
+            <a 
+              href="/#book-call" 
+              className="group block cursor-pointer bg-[#FF6B00] hover:bg-orange-700 transition-all text-white w-full sm:w-[230px] h-[110px] p-5 flex flex-col justify-between relative overflow-hidden rounded-sm shadow-2xl border border-white/10"
+            >
+              <div className="flex justify-between items-start w-full">
+                <span className="font-medium text-sm tracking-tight">Book a Call</span>
+                <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={2} />
+              </div>
+              <p className="text-white/80 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                Schedule a 1:1 strategy session with our automation experts.
+              </p>
+            </a>
+
+            {/* Card 2: Case Study (Dark Navy) */}
+            <a 
+              href="/case%20study.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group block cursor-pointer bg-[#0F2040] hover:bg-[#162e5c] transition-all text-white w-full sm:w-[230px] h-[110px] p-5 flex flex-col justify-between relative overflow-hidden rounded-sm shadow-2xl border border-white/10"
+            >
+              <div className="flex justify-between items-start w-full">
+                <span className="font-medium text-sm tracking-tight">View Case Study</span>
+                <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={2} />
+              </div>
+              <p className="text-white/70 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                See how we achieved 90% autonomous dispatching.
+              </p>
+            </a>
+
+          </div>
+
         </div>
       </section>
 
       {/* --- Lower Content Area (White) --- */}
-      <div className="relative flex-1 bg-white">
+      <div className="relative flex-1 bg-white border-t border-slate-100">
         
         {/* Subtle Particle Background restricted to the agent cards area */}
         <div 

@@ -9,7 +9,7 @@ const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Avishkar AI | FSM Dispatch & Uptime Layer",
+  title: "Avishkar AI",
   description: "AI-native dispatch platform for critical infrastructure. Powering 15k+ ATMs and 68k+ telecom towers.",
 };
 
