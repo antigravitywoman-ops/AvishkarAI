@@ -49,10 +49,12 @@ export default function HeroSection() {
       </div>
 
       {/* --- Main Hero Content --- */}
-      <main className="relative z-10 flex flex-col w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-20 lg:pt-40 pb-16 lg:pb-24 flex-1">
+      {/* INCREASED top padding (pt-28 lg:pt-40) to push heading down */}
+      {/* INCREASED bottom padding (pb-24 lg:pb-36) to push buttons up */}
+      <main className="relative z-10 flex flex-col w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-28 lg:pt-40 pb-24 lg:pb-36 flex-1">
         
         {/* Top Text Area: 12-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
           
           {/* Main Headline */}
           <div className="lg:col-span-7">
@@ -63,7 +65,7 @@ export default function HeroSection() {
           </div>
           
           {/* Supporting Paragraph - Brand Orange */}
-          <div className="lg:col-span-4 lg:col-start-9 lg:pt-3">
+          <div className="lg:col-span-4 lg:col-start-9 lg:pt-1">
             <p className="text-[#FF6B00] text-base lg:text-[1.1rem] leading-relaxed max-w-md font-medium drop-shadow-md">
               FSM Dispatch automates the entire uptime cycle. When an alert fires, AI triages the severity, identifies the right engineer, and tracks resolution—eliminating reactive manual coordination.
             </p>
@@ -71,8 +73,8 @@ export default function HeroSection() {
           
         </div>
 
-        {/* Bottom Interactive Cards - Reduced Size */}
-        <div className="mt-auto pt-20 lg:pt-32 flex flex-col sm:flex-row justify-end gap-3 lg:gap-4 w-full">
+        {/* Bottom Interactive Cards */}
+        <div className="mt-auto pt-12 lg:pt-16 flex flex-col sm:flex-row justify-end gap-3 lg:gap-4 w-full">
           
           {/* Card 1: Book a Call (Orange) */}
           <a 
