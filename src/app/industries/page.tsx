@@ -1,7 +1,10 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Footer from '@/components/Footer';
+import { MeshGradient } from "@paper-design/shaders-react";
 
 type Industry = {
   name: string;
@@ -48,34 +51,53 @@ const industries: Industry[] = [
 ];
 
 export default function IndustryPage() {
+  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const update = () =>
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const meshColors = ["#0D2149", "#112038", "#FF6B00", "#182a4d", "#ff9d5c", "#020617"];
+
   return (
     <main className="flex min-h-screen flex-col w-full bg-white font-sans selection:bg-orange-600 selection:text-white">
       
-      {/* --- Hero Section with Video Background --- */}
-      <section className="relative w-full min-h-[50vh] flex flex-col pt-28 lg:pt-40 pb-24 lg:pb-32 overflow-hidden bg-black">
+      {/* --- Hero Section --- */}
+      <section className="relative w-full min-h-[70vh] lg:min-h-[80vh] flex flex-col pt-32 lg:pt-40 pb-20 lg:pb-28 overflow-hidden bg-black">
         
-        {/* Pure Video Background */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          
-          {/* Gradient overlay to blend the video smoothly into the white section below */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
+          {mounted && (
+            <>
+              <MeshGradient
+                width={dimensions.width}
+                height={dimensions.height}
+                colors={meshColors}
+                distortion={1.2}
+                swirl={0.5}
+                grainMixer={0}
+                grainOverlay={0}
+                speed={0.4}
+                offsetX={0}
+              />
+              {/* Dark veil to keep text readable against the shader */}
+              <div className="absolute inset-0 bg-black/50" />
+            </>
+          )}
         </div>
 
-        {/* --- Content Area matched to Home Page Grid --- */}
+        {/* --- Content Area --- */}
         <div className="relative z-20 flex flex-col w-full max-w-[1440px] mx-auto px-6 lg:px-12 flex-1">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full items-center">
             
-            {/* Left Side: Main Headline */}
             <div className="lg:col-span-7">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-[1.1] tracking-tight drop-shadow-2xl">
                 AI agents built for<><br /></> growth and <br className="hidden lg:block" />
@@ -83,8 +105,7 @@ export default function IndustryPage() {
               </h1>
             </div>
             
-            {/* Right Side: Supporting Paragraph */}
-            <div className="lg:col-span-4 lg:col-start-9 lg:pt-3">
+            <div className="lg:col-span-4 lg:col-start-9">
               <p className="text-[#FF6B00] text-base lg:text-[1.1rem] leading-relaxed font-medium drop-shadow-md">
                 From recruitment and healthcare to legal services and manufacturing — <br className="hidden lg:block" />
                 AvishkarAI delivers custom agents tailored to your specific industry vertical.
@@ -92,11 +113,46 @@ export default function IndustryPage() {
             </div>
 
           </div>
+
+          {/* --- Bottom Interactive Cards --- */}
+          <div className="mt-auto pt-20 lg:pt-32 flex flex-col sm:flex-row justify-end gap-3 lg:gap-4 w-full">
+            
+            {/* Card 1: Book a Call (Orange) */}
+            <a 
+              href="/#book-call" 
+              className="group block cursor-pointer bg-[#FF6B00] hover:bg-orange-700 transition-all text-white w-full sm:w-[230px] h-[110px] p-5 flex flex-col justify-between relative overflow-hidden rounded-sm shadow-2xl border border-white/10"
+            >
+              <div className="flex justify-between items-start w-full">
+                <span className="font-medium text-sm tracking-tight">Book a Call</span>
+                <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={2} />
+              </div>
+              <p className="text-white/80 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                Schedule a 1:1 strategy session with our automation experts.
+              </p>
+            </a>
+
+            {/* Card 2: Case Study (Dark Navy) */}
+            <a 
+              href="/case%20study.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group block cursor-pointer bg-[#0F2040] hover:bg-[#162e5c] transition-all text-white w-full sm:w-[230px] h-[110px] p-5 flex flex-col justify-between relative overflow-hidden rounded-sm shadow-2xl border border-white/10"
+            >
+              <div className="flex justify-between items-start w-full">
+                <span className="font-medium text-sm tracking-tight">View Case Study</span>
+                <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={2} />
+              </div>
+              <p className="text-white/70 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                See how we achieved 90% autonomous dispatching.
+              </p>
+            </a>
+
+          </div>
         </div>
       </section>
 
       {/* --- Industry Grid Section --- */}
-      <section className="py-20 lg:py-32 bg-white relative z-10">
+      <section className="py-20 lg:py-32 bg-white relative z-10 border-t border-slate-100">
         <div className="container mx-auto px-6 lg:px-12 max-w-[1440px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {industries.map((industry) => (

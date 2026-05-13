@@ -1,22 +1,51 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { MeshGradient } from "@paper-design/shaders-react";
 
 export default function HeroSection() {
+  // State to track screen dimensions for the shader
+  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const update = () =>
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Custom Avishkar AI color palette for the mesh shader
+  const meshColors = ["#0D2149", "#112038", "#FF6B00", "#182a4d", "#ff9d5c", "#020617"];
+
   return (
     <div className="relative bg-black flex flex-col font-sans selection:bg-orange-600 selection:text-white overflow-hidden min-h-[80vh] lg:min-h-screen">
       
-      {/* --- Pure Video Background --- */}
+      {/* --- Smooth Mesh Shader Background --- */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {mounted && (
+          <>
+            <MeshGradient
+              width={dimensions.width}
+              height={dimensions.height}
+              colors={meshColors}
+              distortion={1.2} // Higher distortion for a more fluid feel
+              swirl={0.5}
+              grainMixer={0}
+              grainOverlay={0}
+              speed={0.4}
+              offsetX={0}
+            />
+            {/* Dark veil overlay to ensure the white/orange text pops perfectly */}
+            <div className="absolute inset-0 bg-black/50" />
+          </>
+        )}
       </div>
 
       {/* --- Main Hero Content --- */}
@@ -25,15 +54,15 @@ export default function HeroSection() {
         {/* Top Text Area: 12-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
           
-          {/* Main Headline - Size reduced */}
+          {/* Main Headline */}
           <div className="lg:col-span-7">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-[1.1] tracking-tight drop-shadow-2xl">
               AI-Native Uptime Layer <br className="hidden lg:block" />
-              For Critical <><br /></>Infrastructure
+              For Critical <br />Infrastructure
             </h1>
           </div>
           
-          {/* Supporting Paragraph - Color changed to Brand Orange */}
+          {/* Supporting Paragraph - Brand Orange */}
           <div className="lg:col-span-4 lg:col-start-9 lg:pt-3">
             <p className="text-[#FF6B00] text-base lg:text-[1.1rem] leading-relaxed max-w-md font-medium drop-shadow-md">
               FSM Dispatch automates the entire uptime cycle. When an alert fires, AI triages the severity, identifies the right engineer, and tracks resolution—eliminating reactive manual coordination.
