@@ -35,7 +35,7 @@ export default function HeroSection() {
               width={dimensions.width}
               height={dimensions.height}
               colors={meshColors}
-              distortion={1.2} // Higher distortion for a more fluid feel
+              distortion={1.2} 
               swirl={0.5}
               grainMixer={0}
               grainOverlay={0}
@@ -49,12 +49,10 @@ export default function HeroSection() {
       </div>
 
       {/* --- Main Hero Content --- */}
-      {/* INCREASED top padding (pt-28 lg:pt-40) to push heading down */}
-      {/* INCREASED bottom padding (pb-24 lg:pb-36) to push buttons up */}
-      <main className="relative z-10 flex flex-col w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-28 lg:pt-40 pb-24 lg:pb-36 flex-1">
+      <main className="relative z-10 flex flex-col justify-center w-full max-w-[1440px] mx-auto px-6 lg:px-12 py-24 lg:py-32 flex-1">
         
         {/* Top Text Area: 12-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 w-full items-start">
           
           {/* Main Headline */}
           <div className="lg:col-span-7">
@@ -73,39 +71,50 @@ export default function HeroSection() {
           
         </div>
 
-        {/* Bottom Interactive Cards */}
-        <div className="mt-auto pt-12 lg:pt-16 flex flex-col sm:flex-row justify-end gap-3 lg:gap-4 w-full">
+        {/* Bottom Row: Text on Left, Interactive Cards on Right */}
+        <div className="mt-12 lg:mt-20 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 w-full">
           
-          {/* Card 1: Book a Call (Orange) */}
-          <a 
-            href="#book-call" 
-            className="group block cursor-pointer bg-[#FF6B00] hover:bg-orange-700 transition-all text-white w-full sm:w-[230px] h-[110px] p-5 flex flex-col justify-between relative overflow-hidden rounded-sm shadow-2xl border border-white/10"
-          >
-            <div className="flex justify-between items-start w-full">
-              <span className="font-medium text-sm tracking-tight">Book a Call</span>
-              <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={2} />
-            </div>
-            <p className="text-white/80 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              Schedule a 1:1 strategy session with our automation experts.
+          {/* The Moved Paragraph */}
+          <div className="max-w-md lg:pb-3">
+            <p className="text-white/80 text-sm md:text-base leading-relaxed drop-shadow-md">
+              Powering 15,000+ ATMs and 68,000+ telecom towers globally. We bring precision and autonomous decision-making to your critical field operations.
             </p>
-          </a>
+          </div>
+          
+          {/* The Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 w-full lg:w-auto shrink-0">
+            
+            {/* Card 1: Book a Call (Orange) */}
+            <a 
+              href="#book-call" 
+              className="group block cursor-pointer bg-[#FF6B00] hover:bg-orange-700 transition-all text-white w-full sm:w-[230px] h-[110px] p-5 flex flex-col justify-between relative overflow-hidden rounded-sm shadow-2xl border border-white/10"
+            >
+              <div className="flex justify-between items-start w-full">
+                <span className="font-medium text-sm tracking-tight">Book a Call</span>
+                <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={2} />
+              </div>
+              <p className="text-white/80 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                Schedule a 1:1 strategy session with our automation experts.
+              </p>
+            </a>
 
-          {/* Card 2: Case Study (Dark Navy) */}
-          <a 
-            href="/case%20study.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group block cursor-pointer bg-[#0F2040] hover:bg-[#162e5c] transition-all text-white w-full sm:w-[230px] h-[110px] p-5 flex flex-col justify-between relative overflow-hidden rounded-sm shadow-2xl border border-white/10"
-          >
-            <div className="flex justify-between items-start w-full">
-              <span className="font-medium text-sm tracking-tight">View Case Study</span>
-              <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={2} />
-            </div>
-            <p className="text-white/70 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              See how we achieved 90% autonomous dispatching.
-            </p>
-          </a>
+            {/* Card 2: Case Study (Dark Navy) */}
+            <a 
+              href="/case%20study.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group block cursor-pointer bg-[#0F2040] hover:bg-[#162e5c] transition-all text-white w-full sm:w-[230px] h-[110px] p-5 flex flex-col justify-between relative overflow-hidden rounded-sm shadow-2xl border border-white/10"
+            >
+              <div className="flex justify-between items-start w-full">
+                <span className="font-medium text-sm tracking-tight">View Case Study</span>
+                <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={2} />
+              </div>
+              <p className="text-white/70 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                See how we achieved 90% autonomous dispatching.
+              </p>
+            </a>
 
+          </div>
         </div>
 
       </main>
